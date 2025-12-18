@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гнучке тіло за 20 хвилин | Курс Марго</title>
+    <meta name="description" content="Персональні тренування у твоєму смартфоні. Позбудься болю в спині та сядь на шпагат.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,500;0,700;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Schema.org FAQ Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Я \"дерев'яна\", у мене вийде?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Так! Курс розрахований на початківців. Ми починаємо з простих рухів і поступово збільшуємо амплітуду."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Чи потрібен інвентар?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Тільки килимок і зручний одяг. Іноді ми можемо використовувати підручні засоби (подушку або стілець)."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Коли прийде доступ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Протягом 12 годин після оплати у вказаний тобою месенджер (Telegram або Viber)."
+        }
+      }]
+    }
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'], 
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        bg: '#FAFAF9', // Warm stone background
+                        surface: '#FFFFFF',
+                        primary: '#7C3AED', // Modern Violet
+                        primaryLight: '#DDD6FE',
+                        accent: '#BE185D', // Pink
+                        dark: '#1C1917', // Stone 900
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -10px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 20px rgba(124, 58, 237, 0.3)',
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Modern Utilities */
+        .text-gradient {
+            background: linear-gradient(135deg, #1C1917 0%, #7C3AED 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85); /* Трохи менша прозорість для кращого контрасту */
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .blob-bg {
+            position: absolute;
+            background: radial-gradient(circle, rgba(221, 214, 254, 0.4) 0%, rgba(250, 250, 249, 0) 70%);
+            z-index: -1;
+        }
+
+        /* Fade Up Animation */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out forwards;
+            will-change: transform, opacity; /* Оптимізація рендерингу */
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAFAF9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D6D3D1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #A8A29E;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(124, 58, 237, 0.1);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border-left-color: #7C3AED;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .markdown-content ul { list-style-type: disc; margin-left: 1.5rem; margin-top: 0.5rem; }
+        .markdown-content li { margin-bottom: 0.25rem; }
+        .markdown-content p { margin-bottom: 0.5rem; }
+        .markdown-content strong { color: #7C3AED; }
+    </style>
+</head>
+<body class="bg-bg text-dark antialiased overflow-x-hidden selection:bg-primaryLight selection:text-primary">
+
+    <!-- Floating Navigation (Pill Style) -->
+    <nav class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+        <div class="glass-panel px-6 py-3 rounded-full shadow-lg flex items-center justify-between gap-8 max-w-4xl w-full">
+            <a href="#" class="text-xl font-serif font-bold tracking-tight">MARGO<span class="text-primary">.FIT</span></a>
+            
+            <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-700">
+                <a href="#about" class="hover:text-primary transition">Про курс</a>
+                <a href="#program" class="hover:text-primary transition">Програма</a>
+                <a href="#results" class="hover:text-primary transition">Відгуки</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#pricing" class="hidden md:block bg-dark text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-primary transition duration-300 shadow-lg">Купити</a>
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-dark" aria-label="Відкрити меню">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-white transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center space-y-8 text-2xl font-serif">
+        <button onclick="document.getElementById('mobile-menu').classList.add('translate-x-full')" class="absolute top-8 right-8 text-3xl" aria-label="Закрити меню">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#about" onclick="closeMenu()">Про курс</a>
+        <a href="#program" onclick="closeMenu()">Програма</a>
+        <a href="#results" onclick="closeMenu()">Відгуки</a>
+        <a href="#pricing" onclick="closeMenu()" class="text-primary font-bold">Тарифи</a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <!-- Abstract Background Blobs -->
+        <div class="blob-bg w-[800px] h-[800px] -top-20 -left-20"></div>
+        <div class="blob-bg w-[600px] h-[600px] bottom-0 right-0 bg-pink-100/40"></div>
+
+        <div class="max-w-7xl mx-auto px-4 w-full grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8 relative z-10 animate-on-scroll" style="animation-delay: 0.1s;">
+                <div class="inline-flex items-center gap-2 bg-white border border-gray-100 px-4 py-2 rounded-full shadow-sm">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-xs font-bold uppercase tracking-wide text-gray-600">Доступ назавжди</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-serif font-medium leading-[1.1]">
+                    Гнучке тіло за <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent italic pr-2">20 хвилин</span>
+                    на день
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-600 font-light max-w-lg leading-relaxed">
+                    Персональні тренування у твоєму смартфоні. Позбудься болю в спині, зніми стрес та сядь на шпагат без походів у зал.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#program" class="glass-panel px-8 py-4 rounded-full font-semibold text-lg text-dark hover:bg-white transition-all duration-300 text-center flex items-center justify-center gap-2">
+                        <i class="fas fa-play-circle text-primary"></i> Дивитись програму
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-4 pt-4">
+                    <div class="flex -space-x-3">
+                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User 1">
+                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/65.jpg" alt="User 2">
+                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/32.jpg" alt="User 3">
+                    </div>
+                    <div class="text-sm">
+                        <span class="font-bold block text-dark">3000+ дівчат</span>
+                        <span class="text-gray-600">вже тренуються</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative animate-on-scroll" style="animation-delay: 0.3s;">
+                <!-- Main Image with Shape -->
+                <div class="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition duration-700 ease-out">
+                    <!-- Updated Hero Image with IMG_4388.jpg -->
+                    <img src="IMG_4388.jpg" alt="Yoga Stretching" class="w-full h-auto object-cover object-top" width="800" height="600">
+                </div>
+                
+                <!-- Floating Card 1 -->
+                <div class="absolute -left-8 top-1/4 z-20 glass-panel p-4 rounded-2xl shadow-lg animate-bounce duration-[3000ms]">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-green-100 p-2 rounded-full text-green-600"><i class="fas fa-check"></i></div>
+                        <div>
+                            <p class="text-xs text-gray-500">Результат</p>
+                            <p class="font-bold text-sm">Здорова спина</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Card 2 -->
+                <div class="absolute -right-4 bottom-1/4 z-20 bg-white p-4 rounded-2xl shadow-lg border border-gray-100 max-w-[150px]">
+                    <p class="text-xs text-gray-500 mb-1">Твій графік</p>
+                    <div class="w-full bg-gray-100 rounded-full h-2 mb-2">
+                        <div class="bg-primary h-2 rounded-full" style="width: 20%"></div>
+                    </div>
+                    <p class="font-bold text-xs">Всього 20 хв/день</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Marquee Line (Divider) -->
+    <div class="bg-dark text-white py-3 overflow-hidden rotate-1 mt-10 mb-20">
+        <div class="whitespace-nowrap animate-marquee flex gap-10 text-sm font-bold uppercase tracking-widest opacity-80">
+            <span>• Гнучкість • Грація • Здоров'я • Антистрес • Енергія • Гнучкість • Грація • Здоров'я • Антистрес • Енергія •</span>
+            <span>Гнучкість • Грація • Здоров'я • Антистрес • Енергія • Гнучкість • Грація • Здоров'я • Антистрес • Енергія</span>
+        </div>
+    </div>
+
+    <!-- Pain Points (Modern Cards) -->
+    <section id="problems" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-serif text-center mb-16">
+                Тобі потрібен <span class="italic text-primary">цей курс</span>, якщо:
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card -->
+                <div class="bg-white p-8 rounded-3xl shadow-soft hover:shadow-xl hover:-translate-y-2 transition duration-300 group">
+                    <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-primary text-xl mb-6 group-hover:bg-primary group-hover:text-white transition">
+                        <i class="fas fa-chair"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Сидячий спосіб життя</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Робота за комп’ютером призвела до болю в шиї, сутулості та "кам'яної" спини.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl shadow-soft hover:shadow-xl hover:-translate-y-2 transition duration-300 group">
+                    <div class="w-12 h-12 bg-pink-50 rounded-2xl flex items-center justify-center text-accent text-xl mb-6 group-hover:bg-accent group-hover:text-white transition">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Відчуваєш "дерев'яність"</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Мрієш про грацію кішки, але здається, що твоє тіло зовсім не гнеться.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-soft hover:shadow-xl hover:-translate-y-2 transition duration-300 group">
+                    <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-primary text-xl mb-6 group-hover:bg-primary group-hover:text-white transition">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Немає часу на зал</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Твій графік занадто щільний, щоб витрачати 2 години на дорогу та тренування.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-soft hover:shadow-xl hover:-translate-y-2 transition duration-300 group">
+                    <div class="w-12 h-12 bg-pink-50 rounded-2xl flex items-center justify-center text-accent text-xl mb-6 group-hover:bg-accent group-hover:text-white transition">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Потрібен антистрес</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Хочеш розслабитись після важкого дня, покращити сон та кровообіг.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition (Asymmetrical Layout) -->
+    <section id="about" class="py-20 px-4 bg-white rounded-[3rem] mx-2 md:mx-8 shadow-sm">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 order-2 lg:order-1 relative">
+                <div class="absolute inset-0 bg-primary rounded-[2rem] transform rotate-3 translate-x-2 translate-y-2 opacity-20"></div>
+                <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yoga" loading="lazy" class="relative rounded-[2rem] w-full shadow-lg">
+            </div>
+            
+            <div class="lg:col-span-7 order-1 lg:order-2 space-y-8">
+                <h2 class="text-3xl md:text-5xl font-serif">
+                    Що ти отримаєш <br> вже після <span class="text-gradient">перших занять?</span>
+                </h2>
+                
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div class="p-6 bg-gray-50 rounded-2xl hover:bg-purple-50 transition duration-300">
+                        <i class="fas fa-bolt text-2xl text-primary mb-4"></i>
+                        <h4 class="font-bold text-lg mb-2">Гнучке та слухняне тіло</h4>
+                        <p class="text-sm text-gray-600">Відчуєш прилив енергії та легкість у кожному русі.</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-2xl hover:bg-purple-50 transition duration-300">
+                        <i class="fas fa-crown text-2xl text-primary mb-4"></i>
+                        <h4 class="font-bold text-lg mb-2">Королівська постава</h4>
+                        <p class="text-sm text-gray-600">Зміцнимо м'язовий корсет, що знизить ризик болю.</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-2xl hover:bg-purple-50 transition duration-300">
+                        <i class="fas fa-infinity text-2xl text-primary mb-4"></i>
+                        <h4 class="font-bold text-lg mb-2">Свобода 24/7</h4>
+                        <p class="text-sm text-gray-600">Займайся в піжамі, на відпочинку чи в обідню перерву.</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-2xl hover:bg-purple-50 transition duration-300">
+                        <i class="fas fa-wind text-2xl text-primary mb-4"></i>
+                        <h4 class="font-bold text-lg mb-2">Ефект "Антистрес"</h4>
+                        <p class="text-sm text-gray-600">Розтяжка знижує кортизол. Ти станеш спокійнішою.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program (Bento Grid Style) -->
+    <section id="program" class="py-24 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold tracking-wider uppercase text-sm">Програма курсу</span>
+                <h2 class="text-4xl md:text-5xl font-serif mt-2">Твій шлях до нового тіла</h2>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[200px]">
+                
+                <!-- Large Box 1 -->
+                <div class="bg-dark text-white p-8 rounded-3xl md:col-span-2 flex flex-col justify-center relative overflow-hidden group">
+                    <div class="absolute right-0 top-0 w-64 h-64 bg-primary rounded-full blur-[80px] opacity-20 group-hover:opacity-40 transition"></div>
+                    <h3 class="text-4xl font-serif mb-2 relative z-10">15 Відео-уроків</h3>
+                    <p class="text-gray-400 relative z-10">Комплексна система, розроблена професіоналом. Крок за кроком до ідеалу.</p>
+                    <div class="absolute bottom-6 right-6 text-6xl opacity-10"><i class="fas fa-layer-group"></i></div>
+                </div>
+
+                <!-- Box 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-soft flex flex-col justify-between border border-gray-100 hover:border-primary transition duration-300">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-primary text-xl">
+                        <i class="fas fa-stopwatch"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold">20 хвилин</h3>
+                        <p class="text-sm text-gray-600">Менше, ніж стрічка Instagram.</p>
+                    </div>
+                </div>
+
+                <!-- Tall Box -->
+                <div class="bg-gradient-to-br from-primary to-purple-800 text-white p-8 rounded-3xl md:row-span-2 flex flex-col justify-between shadow-glow relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="bg-white/20 backdrop-blur w-fit px-3 py-1 rounded-full text-xs font-bold mb-4">ФОРМАТ</div>
+                        <h3 class="text-3xl font-serif leading-tight mb-4">Repeat after me</h3>
+                        <p class="text-purple-100 text-sm">Я роблю разом з тобою від першої до останньої секунди. Жодних пауз на "подивіться як треба". Ми просто робимо це разом.</p>
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-white opacity-10 rounded-full"></div>
+                </div>
+
+                <!-- Box 4 -->
+                <div class="bg-white p-8 rounded-3xl shadow-soft flex flex-col justify-between border border-gray-100 hover:border-primary transition duration-300">
+                    <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-accent text-xl">
+                        <i class="fas fa-child-reaching"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold">Full Body</h3>
+                        <p class="text-sm text-gray-600">Спина, ноги, руки, шия.</p>
+                    </div>
+                </div>
+
+                <!-- Wide Box -->
+                <div class="bg-gray-100 p-8 rounded-3xl md:col-span-2 flex items-center justify-between group overflow-hidden">
+                    <div class="max-w-xs relative z-10">
+                        <h3 class="text-2xl font-bold mb-2">Зручність 100%</h3>
+                        <p class="text-gray-600 text-sm">Потрібен лише телефон і килимок. Тренуйся вдома, в парку або готелі.</p>
+                    </div>
+                    <i class="fas fa-mobile-screen text-8xl text-gray-200 transform group-hover:scale-110 group-hover:rotate-6 transition duration-500"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Section (Clean) -->
+    <section class="py-20 px-4">
+        <div class="max-w-5xl mx-auto glass-panel p-8 md:p-12 rounded-[3rem] border border-gray-200">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/3 relative">
+                     <div class="absolute inset-0 bg-gradient-to-tr from-primary to-accent rounded-[2rem] transform -rotate-6"></div>
+                     <!-- Updated Author Image with IMG_0587.JPEG -->
+                     <img src="IMG_0587.JPEG" loading="lazy" alt="Trainer" class="relative rounded-[2rem] w-full shadow-2xl object-cover object-top h-[500px]">
+                </div>
+                <div class="md:w-2/3 space-y-6">
+                    <h2 class="text-3xl md:text-4xl font-serif">Твій тренер — <span class="text-primary">Марго</span></h2>
+                    <blockquote class="text-xl italic text-gray-700 border-l-4 border-accent pl-4">
+                        "Твоє тіло здатне на більше — просто дозволь йому це показати."
+                    </blockquote>
+                    
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div>
+                            <p class="text-3xl font-bold text-dark">13+</p>
+                            <p class="text-xs uppercase tracking-wide text-gray-600">Років досвіду</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-dark">3000+</p>
+                            <p class="text-xs uppercase tracking-wide text-gray-600">Щасливих клієнток</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-dark">PRO</p>
+                            <p class="text-xs uppercase tracking-wide text-gray-600">Fitness & Stretching</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-dark">2005</p>
+                            <p class="text-xs uppercase tracking-wide text-gray-600">Рік старту кар'єри</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof (Modern Reviews) -->
+    <section id="results" class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-serif text-center mb-16">Stories of <span class="text-primary italic">Success</span></h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review Card 1 -->
+                <div class="bg-bg p-8 rounded-3xl flex flex-col gap-6 hover:shadow-lg transition duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center font-bold text-primary">О</div>
+                        <div>
+                            <p class="font-bold">Олена</p>
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"Марго, дякую! Перестала боліти спина після офісу. Це справжній порятунок для моєї шиї. Вправи дуже доступні."</p>
+                </div>
+
+                <!-- Visual Proof (Image) -->
+                <div class="relative rounded-3xl overflow-hidden group h-80 md:h-auto">
+                    <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" loading="lazy" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Split">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
+                        <div class="text-white">
+                            <p class="font-bold text-xl">Шпагат за 2 місяці</p>
+                            <p class="text-sm opacity-80">Результат Ірини</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="bg-bg p-8 rounded-3xl flex flex-col gap-6 hover:shadow-lg transition duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-pink-200 rounded-full flex items-center justify-center font-bold text-accent">М</div>
+                        <div>
+                            <p class="font-bold">Марина</p>
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"Дуже зручно, що уроки короткі, встигаю зранку перед роботою. Це дає заряд енергії на весь день!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing (Modern Glass) -->
+    <section id="pricing" class="py-24 px-4 bg-dark text-white relative overflow-hidden">
+        <!-- Background Gradients -->
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary opacity-20 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-accent opacity-20 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <h2 class="text-3xl md:text-5xl font-serif text-center mb-4">Обери свій рівень</h2>
+            <p class="text-center text-gray-400 mb-16">Інвестиція в твоє здоров'я та красу</p>
+            
+            <div class="grid md:grid-cols-3 gap-6 items-start">
+                
+                <!-- Basic -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition duration-300">
+                    <h3 class="text-xl font-bold mb-2">Розтяжка — це цікаво</h3>
+                    <div class="text-3xl font-serif mb-6">390 <span class="text-sm font-sans text-gray-400">грн</span></div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-200">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> 15 тренувань</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> Доступ назавжди</li>
+                    </ul>
+                    <button onclick="openModal('basic')" class="w-full py-3 rounded-xl border border-white/20 hover:bg-white hover:text-dark transition font-semibold">Обрати</button>
+                </div>
+
+                <!-- Standard (Highlight) -->
+                <div class="bg-gradient-to-b from-primary/20 to-primary/5 backdrop-blur-md border border-primary/50 p-10 rounded-3xl shadow-glow relative transform md:scale-105 z-20">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary to-accent px-4 py-1 rounded-full text-xs font-bold tracking-wide uppercase">Хіт продажів 🔥</div>
+                    
+                    <h3 class="text-2xl font-bold mb-2">Гнучка, як кішка</h3>
+                    <div class="text-5xl font-serif mb-6">590 <span class="text-lg font-sans text-gray-300">грн</span></div>
+                    
+                    <ul class="space-y-4 mb-10 text-gray-100 text-sm">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-primary"></i> 15 тренувань на все тіло</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-primary"></i> Доступ назавжди</li>
+                        <li class="flex items-center gap-3 font-bold text-white"><i class="fas fa-gift text-accent"></i> +2 спец-тренування (Шпагат, постава)</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> Чек-лист “Ранкові ритуали”</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-400 mt-1"></i> <span>ГАЙД: 🥑 Рекомендації з харчування для гнучкості</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> Ранкова руханка + дихальна практика</li>
+                    </ul>
+                    <button onclick="openModal('standard')" class="w-full py-4 bg-primary rounded-xl hover:bg-violet-600 transition shadow-lg font-bold text-lg">Розпочати зараз</button>
+                </div>
+
+                <!-- VIP -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition duration-300">
+                    <h3 class="text-xl font-bold mb-2">Шпагат — моє все</h3>
+                    <div class="text-3xl font-serif mb-6">1390 <span class="text-sm font-sans text-gray-400">грн</span></div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-200">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-green-400 mt-1"></i> <span>Всі матеріали тарифу "Кішка" (Тренування + Гайд + Бонуси)</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-video text-blue-400 mt-1"></i> <span class="font-bold text-white">Індивідуальне тренування online з Марго</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-green-400"></i> Розбір техніки</li>
+                    </ul>
+                    <button onclick="openModal('vip')" class="w-full py-3 rounded-xl border border-white/20 hover:bg-white hover:text-dark transition font-semibold">Стати VIP</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="py-16 px-4 bg-primary/10 text-center">
+        <div class="max-w-3xl mx-auto">
+             <i class="fas fa-shield-heart text-4xl text-primary mb-4"></i>
+             <h3 class="text-2xl font-bold mb-4">Гарантія безпечної техніки</h3>
+             <p class="text-gray-700 leading-relaxed">Я пояснюю вправи настільки детально, що зробити неправильно просто неможливо. Це як персональне заняття, тільки дешевше.</p>
+        </div>
+    </section>
+
+    <!-- FAQ & AI Consultant -->
+    <section class="py-20 px-4">
+        <div class="max-w-3xl mx-auto space-y-8">
+            <h2 class="text-3xl font-serif text-center mb-8">Питання та відповіді</h2>
+
+            <!-- AI Chat Input -->
+            <div class="bg-gradient-to-r from-purple-50 to-white p-6 rounded-2xl border border-purple-100 shadow-sm relative overflow-hidden">
+                <div class="relative z-10">
+                    <label class="block font-bold text-primary mb-2 flex items-center gap-2">
+                        <i class="fas fa-sparkles"></i> Спитай AI-Марго
+                    </label>
+                    <div class="flex gap-2">
+                        <input type="text" id="ai-chat-input" placeholder="Наприклад: Чи підійде курс для мам в декреті?" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition">
+                        <button onclick="askAIMargo()" class="bg-primary text-white px-6 rounded-xl hover:bg-violet-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div id="ai-chat-response" class="hidden mt-4 bg-white p-4 rounded-xl border border-gray-100 text-sm text-gray-700 shadow-sm"></div>
+                </div>
+            </div>
+            
+            <!-- Standard FAQ -->
+            <div class="space-y-4">
+                <details class="group bg-white p-6 rounded-2xl shadow-sm cursor-pointer border border-transparent hover:border-gray-200 transition">
+                    <summary class="flex justify-between items-center font-bold text-lg list-none">
+                        <span>Я "дерев'яна", у мене вийде?</span>
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
+                    </summary>
+                    <div class="text-gray-700 mt-4 leading-relaxed pl-4 border-l-2 border-primary">
+                        Так! Курс розрахований на початківців. Ми починаємо з простих рухів.
+                    </div>
+                </details>
+                
+                <details class="group bg-white p-6 rounded-2xl shadow-sm cursor-pointer border border-transparent hover:border-gray-200 transition">
+                    <summary class="flex justify-between items-center font-bold text-lg list-none">
+                        <span>Чи потрібен інвентар?</span>
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
+                    </summary>
+                    <div class="text-gray-700 mt-4 leading-relaxed pl-4 border-l-2 border-primary">
+                        Тільки килимок і зручний одяг. Іноді подушка або стілець.
+                    </div>
+                </details>
+
+                <details class="group bg-white p-6 rounded-2xl shadow-sm cursor-pointer border border-transparent hover:border-gray-200 transition">
+                    <summary class="flex justify-between items-center font-bold text-lg list-none">
+                        <span>Коли прийде доступ?</span>
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
+                    </summary>
+                    <div class="text-gray-700 mt-4 leading-relaxed pl-4 border-l-2 border-primary">
+                        Протягом 12 годин після оплати у Telegram або Viber.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minimalist Footer -->
+    <footer class="bg-bg py-20 px-4 text-center border-t border-gray-200">
+        <h2 class="text-4xl md:text-6xl font-serif mb-8 text-dark">Почни зміни сьогодні</h2>
+        <a href="#pricing" class="inline-flex items-center gap-3 bg-dark text-white px-10 py-5 rounded-full text-xl font-semibold hover:bg-primary transition duration-300 shadow-xl hover:shadow-glow">
+            Отримати доступ <i class="fas fa-arrow-right"></i>
+        </a>
+        
+        <div class="mt-16 flex justify-center gap-8 text-2xl text-gray-400">
+            <a href="#" class="hover:text-primary transition hover:-translate-y-1"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-primary transition hover:-translate-y-1"><i class="fab fa-telegram"></i></a>
+            <a href="#" class="hover:text-primary transition hover:-translate-y-1"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="mt-8 text-sm text-gray-500">&copy; 2024 MARGO.FIT</p>
+    </footer>
+
+    <!-- Modal (Improved UX) -->
+    <div id="paymentModal" class="fixed inset-0 bg-dark/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center px-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 relative animate-on-scroll">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-dark w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition" aria-label="Закрити модальне вікно">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="text-2xl font-bold mb-2 text-center">Замовлення</h3>
+            <p class="text-gray-500 text-center mb-8 text-sm">Ви обрали тариф: <span id="modalTariffName" class="font-bold text-primary"></span></p>
+            
+            <form class="space-y-5" onsubmit="event.preventDefault(); alert('Дякуємо! Це демо-версія.'); closeModal();">
+                <div>
+                    <label for="name" class="block text-sm font-bold text-gray-700 mb-1">Ваше ім'я</label>
+                    <input type="text" id="name" placeholder="Введіть ім'я" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition placeholder-gray-400">
+                </div>
+                
+                <div>
+                    <label for="phone" class="block text-sm font-bold text-gray-700 mb-1">Телефон (Telegram/Viber)</label>
+                    <input type="tel" id="phone" placeholder="+380..." required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition placeholder-gray-400">
+                </div>
+                
+                <div>
+                    <label for="email" class="block text-sm font-bold text-gray-700 mb-1">Email</label>
+                    <input type="email" id="email" placeholder="example@mail.com" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition placeholder-gray-400">
+                </div>
+                
+                <button type="submit" class="w-full bg-dark text-white font-bold py-4 rounded-xl mt-4 hover:bg-primary transition shadow-lg flex justify-center items-center gap-2">
+                    Оплатити <span id="modalPrice"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Animations setup
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Mobile Menu
+        const menu = document.getElementById('mobile-menu');
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            menu.classList.remove('translate-x-full');
+        });
+        function closeMenu() {
+            menu.classList.add('translate-x-full');
+        }
+
+        // Modal
+        const modal = document.getElementById('paymentModal');
+        const tName = document.getElementById('modalTariffName');
+        const tPrice = document.getElementById('modalPrice');
+
+        function openModal(type) {
+            modal.classList.remove('hidden');
+            if(type === 'basic') { 
+                tName.innerText = 'Розтяжка — це цікаво'; 
+                tPrice.innerText = '390 грн'; 
+            } 
+            else if (type === 'standard') { 
+                tName.innerText = 'Гнучка, як кішка'; 
+                tPrice.innerText = '590 грн'; 
+            } 
+            else { 
+                tName.innerText = 'VIP'; 
+                tPrice.innerText = '1390 грн'; 
+            }
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // --- GEMINI API INTEGRATION ---
+        const apiKey = ""; // API key will be injected by the environment
+
+        // 2. AI FAQ Assistant
+        async function askAIMargo() {
+            const input = document.getElementById('ai-chat-input');
+            const responseDiv = document.getElementById('ai-chat-response');
+            const question = input.value;
+
+            if (!question.trim()) return;
+
+            responseDiv.innerHTML = '<div class="spinner border-primary w-4 h-4"></div> Друкую відповідь...';
+            responseDiv.classList.remove('hidden');
+
+            const systemPrompt = "Ти - Марго, тренер курсу 'Гнучке тіло за 20 хвилин'. Твоя мова - українська. Відповідай коротко (до 2 речень), дружньо та професійно на питання потенційних клієнтів про гнучкість, здоров'я спини та твій курс.";
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: question }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                    })
+                });
+
+                if (!response.ok) throw new Error('API Error');
+                
+                const data = await response.json();
+                const text = data.candidates[0].content.parts[0].text;
+                
+                responseDiv.innerHTML = `<strong>Марго AI:</strong> ${text}`;
+            } catch (error) {
+                responseDiv.innerHTML = "Вибач, я зараз не можу відповісти. Спробуй пізніше.";
+            }
+        }
+    </script>
+</body>
+</html>
