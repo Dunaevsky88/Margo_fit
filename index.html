@@ -294,6 +294,21 @@
         </div>
     </section>
 
+    <!-- Floating Sales Badge (Bottom Right) -->
+    <div id="sales-badge" class="fixed bottom-6 right-4 z-50 animate-bounce duration-[3000ms] hover:animate-none transition-transform hover:scale-105 group">
+        <button onclick="document.getElementById('sales-badge').style.display='none'" class="absolute -top-2 -right-1 bg-white text-gray-400 hover:text-red-500 rounded-full w-5 h-5 flex items-center justify-center shadow-sm text-xs z-20 cursor-pointer transition-colors" aria-label="Закрити">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#pricing" class="block">
+            <div class="bg-accent text-white px-4 py-2 rounded-full shadow-glow border-2 border-white flex items-center gap-2">
+                <div class="flex flex-col leading-none">
+                    <span class="text-[9px] font-bold uppercase opacity-80 mb-0.5 group-hover:opacity-100 transition">Вигідна ціна</span>
+                    <span class="font-bold text-sm whitespace-nowrap">1 тренування = 26 грн 🔥</span>
+                </div>
+            </div>
+        </a>
+    </div>
+
     <!-- Value Proposition (Asymmetrical Layout) -->
     <section id="about" class="py-20 px-4 bg-white rounded-[3rem] mx-2 md:mx-8 shadow-sm">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
@@ -690,6 +705,7 @@
 </body>
 
 </html>
+
 
 
 
